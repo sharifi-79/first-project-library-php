@@ -11,7 +11,7 @@ $qury = "SELECT * FROM books WHERE id = ? ;";
 $statment = $connection->prepare($qury);
 $statment->execute([$_GET["book_id"]]);
 $book = $statment->fetch();
-if($book->status !== false){
+if($book->id !== false){
     //shotcode if and else
     $status = ($book->status === 1)? 0 : 1;
     $qury = "UPDATE books SET `status`= ? WHERE id = ?;";
