@@ -22,7 +22,7 @@ global $connection;
         <a href="" class="btn btn-outline-light">Logout</a>
     </div>
     <h2>Managing books</h2>
-    <a href="<?=url("admin/uploadBook.php");?>" class="btn btn-outline-light m-3" type="button">Upload Book</a>
+    <a href="<?=url("admin/manegerBook/uploadBook.php");?>" class="btn btn-outline-light m-3" type="button">Upload Book</a>
     <?php 
         require_once "../../layut/navbarDown.php";
     ?>

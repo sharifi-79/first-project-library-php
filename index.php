@@ -192,7 +192,7 @@ https://templatemo.com/tm-540-lava-landing-page
                             </div>
                         </li>
                         <li data-scroll-reveal="enter right move 30px over 0.6s after 0.6s">
-                            <img src="assets/images/about-icon-03.png" alt="">
+                            <img src="<?=url("assets/images/about-icon-01 copy.png"); ?>" alt="">
                             <div class="text">
                                 <h4>Aenean faucibus venenatis</h4>
                                 <p>Phasellus in imperdiet felis, eget vestibulum nulla. Aliquam nec dui nec augue

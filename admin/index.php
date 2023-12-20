@@ -17,7 +17,12 @@ global $connection;
     ?>
     <a href="managerBook.php" class="btn btn-outline-light m-3" type="button">log out</a>
     <h2>Managing users and their books</h2>
-    <a href="<?=url("admin/manegerBook");?>" class="btn btn-outline-light m-3" type="button">maneger Book</a>
+    <div class="btn-group" role="group" aria-label="Basic outlined example">
+        <a href="<?=url("admin/manegerBook");?>" class="btn btn-outline-light">maneger Book</a>
+        <a href="<?=url("admin/manegerUser");?>" class="btn btn-outline-light">maneger Users</a>
+    </div>
+
+
     <?php 
         require_once "../layut/navbarDown.php";
     ?>    
