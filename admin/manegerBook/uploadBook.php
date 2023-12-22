@@ -38,7 +38,7 @@ if(isset($_POST["nameBook"]) && $_POST["nameBook"] !== ""
     if(!in_array($pdfMimes, $allowedMimesPdf)){
         redirect("admin");
     }
-    $pdf = "/assets/pdf/". $_POST["nameBook"]."_for_".$_POST["Writer"].".".$pdfMimes;
+    $pdf = "/assets/pdf/". $_POST["nameBook"]."_from_".$_POST["Writer"].".".$pdfMimes;
     $move_pdf = move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $basePath.$pdf);
 
     //size pdf 
