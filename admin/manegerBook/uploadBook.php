@@ -77,7 +77,7 @@ if(isset($_POST["nameBook"]) && $_POST["nameBook"] !== ""
         require_once "../../layut/navbarTop.php";
     ?>
     <div class="btn-group" role="group" aria-label="Basic outlined example">
-        <a href="" class="btn btn-outline-light">Back</a>
+        <a href="<?=url("admin/manegerBook")?>" class="btn btn-outline-light">Back</a>
         <a href="" class="btn btn-outline-light">Logout</a>
     </div>
     <h2>Upload books</h2>

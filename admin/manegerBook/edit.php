@@ -71,6 +71,7 @@ if(isset($_POST["nameBook"]) && $_POST["nameBook"] !== ""
         }
         
     }else{
+        //if user dont submit pic and pdf just value updated
         $qury = "UPDATE books SET nameBook=?, Publications=?, Writer=?, category_id=? WHERE id=?;";
         $statment = $connection->prepare($qury);
         $statment->execute([$_POST["nameBook"], $_POST["Publications"], $_POST["Writer"], $_POST["cat_id"], $_GET["book_id"]]);

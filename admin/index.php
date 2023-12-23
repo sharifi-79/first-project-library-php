@@ -42,9 +42,7 @@ global $connection;
                 <td>name</td>
                 <td>family</td>
                 <td>username</td>
-                <td>personalCode</td>
                 <td>phone</td>
-                <td>password</td>
                 <td>date_start</td>
                 <td>date_end</td>
                 <td>nameBook</td>
@@ -61,9 +59,7 @@ global $connection;
                 <td><?= $record->name ?></td>
                 <td><?= $record->family ?></td>
                 <td><?= $record->username ?></td>
-                <td><?= $record->personalCode ?></td>
                 <td><?= $record->phone ?></td>
-                <td><?= $record->password ?></td>
                 <td><?= $record->date_start ?></td>
                 <td><?= $record->date_end ?></td>
                 <td><?= $record->nameBook ?></td>

@@ -79,7 +79,7 @@ global $connection;
                         </a>
                     </td>    
                     <td><a class='btn btn-danger' href='<?= url("admin/manegerUser/delete.php?user_id=".$user->id);?>' role='button'>Delete</a></td>
-                    <td><a class='btn btn-success' href='' role='button'>Edite</a></td>
+                    <td><a class='btn btn-success' href='<?= url("admin/manegerUser/advanced.php?user_id=".$user->id);?>' role='button'>Advanced </a></td>
                 </tr>
                 <?php }?>
             </tbody>

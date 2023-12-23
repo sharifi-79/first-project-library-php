@@ -100,7 +100,8 @@ https://templatemo.com/tm-540-lava-landing-page
                         <h1>Simple App that we <em>CREATE</em></h1>
                         <p>Lava <a href="#">HTML landing page</a> template is provided by <a href="#">TemplateMo</a>.
                            You can modify and use it for your commercial websites for free of charge. This template is last updated on 29 Oct 2019.</p> 
-                        <a href="#about" class="main-button-slider">KNOW US BETTER</a>
+                        <a href="<?= url("auth/login.php");?>" class="main-button-slider">LOGIN</a>
+                        <a href="<?= url("auth/register.php");?>" class="main-button-slider">REGISTER</a>
                     </div>
                 </div>
             </div>
