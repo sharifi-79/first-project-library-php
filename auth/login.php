@@ -1,6 +1,46 @@
+<?php session_start();?>
 <?php 
 require_once "../functions/helper.php";
 require_once "../functions/connection.php";
+global $connection;
+
+// if the user befor logged in, now logout
+if($_SESSION["user"]){
+    unset($_SESSION["user"]);
+}
+// show error
+$error = "";
+
+if(isset($_POST["username"]) && $_POST["username"] !== ""
+ && isset($_POST["password"]) && $_POST["password"] !== ""){
+
+    if($_POST["username"] === "admin" && $_POST["password"] === "admin"){
+        $_SESSION["admin"] = "admin";
+        redirect("admin");
+    }
+    
+    // check exist email 
+    $qury = "SELECT * FROM users WHERE username = ?";
+    $statment = $connection->prepare($qury);
+    $statment->execute([$_POST["username"]]);
+    $user = $statment->fetch();
+    if($user !== false){
+        if(password_verify($_POST["password"], $user->password)){
+            $_SESSION["user"] = $user->username;
+            redirect("user");
+        }else{
+        $error = "not valid password";
+    }
+
+    }else{
+        $error = "not exist your username";
+    }
+
+
+
+ }
+
+
 
 ?>
 <!DOCTYPE html>
@@ -15,15 +55,16 @@ require_once "../functions/connection.php";
     <div class="container">
         <div class="screen">
             <div class="screen__content">
-                <form class="login">
+                <form class="login" method="post" action="<?=url("auth/login.php");?>">
                     <h2>WELLCOME</h2>
+                    <p><?php if($error !== "")echo $error;?></p>
                     <div class="login__field">
                         <i class="login__icon fas fa-user"></i>
-                        <input type="text" class="login__input" placeholder="User name">
+                        <input type="text" class="login__input" name="username" placeholder="User name">
                     </div>
                     <div class="login__field">
                         <i class="login__icon fas fa-lock"></i>
-                        <input type="password" class="login__input" placeholder="Password">
+                        <input type="password" class="login__input" name="password" placeholder="Password">
                     </div>
                     <button class="button login__submit">
                         <span class="button__text">Log In Now</span>

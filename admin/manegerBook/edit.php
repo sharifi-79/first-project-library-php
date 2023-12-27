@@ -2,6 +2,7 @@
 require_once "../../functions/helper.php";
 require_once "../../functions/connection.php";
 require_once "../../functions/convert-Bytes.php";
+require_once "../../functions/check_login_admin.php ";
 
 // user just click on edit
 if(!isset($_GET["book_id"]) && $_GET["book_id"] === ""){

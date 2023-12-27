@@ -1,6 +1,7 @@
 <?php 
 require_once "../../functions/helper.php";
 require_once "../../functions/connection.php";
+require_once "../../functions/check_login_admin.php ";
 global $connection;
 
 if(!isset($_GET["book_id"]) && $_GET["book_id"] === ""){

@@ -1,6 +1,7 @@
 <?php 
 require_once "../../functions/helper.php";
 require_once "../../functions/connection.php";
+require_once "../../functions/check_login_admin.php ";
 global $connection;
 ?>
 
@@ -36,7 +37,6 @@ global $connection;
                     <td>username</td>
                     <td>personalCode</td>
                     <td>phone</td>
-                    <td>password</td>
                     <td>created_at</td>
                     <td>last_visited</td>
                     <td>count Book</td>
@@ -63,7 +63,6 @@ global $connection;
                     <td><?= $user->username ?></td>
                     <td><?= $user->personalCode?></td>
                     <td><?= $user->phone?></td>
-                    <td><?= $user->password?></td>
                     <td><?= $user->created_at?></td>
                     <td><?= $user->last_visited?></td>
                     <td><?= $user->countbook?></td>

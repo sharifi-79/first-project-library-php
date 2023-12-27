@@ -2,7 +2,7 @@
 require_once "../../functions/helper.php";
 require_once "../../functions/connection.php";
 require_once "../../functions/convert-Bytes.php";
-
+require_once "../../functions/check_login_admin.php ";
 global $connection;
 //check is not null and empty
 if(isset($_POST["nameBook"]) && $_POST["nameBook"] !== ""
