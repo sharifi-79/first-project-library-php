@@ -1,7 +1,7 @@
 <?php 
 require_once "../../functions/helper.php";
 require_once "../../functions/connection.php";
-require_once "../../functions/check_login_admin.php ";
+require_once "../../functions/check_login_admin.php";
 global $connection;
 
 //check exist id in table admin

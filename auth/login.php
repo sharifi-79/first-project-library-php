@@ -1,5 +1,5 @@
-<?php session_start();?>
 <?php 
+session_start();
 require_once "../functions/helper.php";
 require_once "../functions/connection.php";
 global $connection;
@@ -8,6 +8,9 @@ global $connection;
 if($_SESSION["user"]){
     unset($_SESSION["user"]);
 }
+if($_SESSION["admin"]){
+    unset($_SESSION["admin"]);
+}
 // show error
 $error = "";
 
@@ -15,7 +18,7 @@ if(isset($_POST["username"]) && $_POST["username"] !== ""
  && isset($_POST["password"]) && $_POST["password"] !== ""){
 
     if($_POST["username"] === "admin" && $_POST["password"] === "admin"){
-        $_SESSION["admin"] = "admin";
+        $_SESSION["admin"] = 1;
         redirect("admin");
     }
     

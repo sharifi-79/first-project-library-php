@@ -1,11 +1,9 @@
 <?php 
 session_start();
 
-if(!isset($_SESSION["admin"])){
+if($_SESSION["admin"] != 1){
     redirect("auth/login.php");
 }
 
 
 
-
-?>

@@ -23,6 +23,15 @@
     color: whitesmoke;
     margin-top: 30px;
 }
+.heders h3{
+    color: whitesmoke;
+    margin-top: 30px;
+}
+.showitem{
+    height: 30%;
+    overflow:scroll;
+    display: none;
+}
 
 
 
