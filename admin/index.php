@@ -16,7 +16,7 @@ global $connection;
     <?php 
         require_once "../layut/navbarTop.php";
     ?>
-    <a href="managerBook.php" class="btn btn-outline-light m-3" type="button">log out</a>
+    <a href="<?=url("auth/logout.php");?>" class="btn btn-outline-light m-3" type="button">log out</a>
     <h2>Managing users and their books</h2>
     <div class="btn-group" role="group" aria-label="Basic outlined example">
         <a href="<?=url("admin/manegerBook");?>" class="btn btn-outline-light">maneger Book</a>

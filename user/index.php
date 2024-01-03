@@ -24,7 +24,7 @@ $user = $statment->fetch();
     <?php 
         require_once "../layut/navbarTop.php";
     ?>
-    <a href="managerBook.php" class="btn btn-outline-light m-3" type="button">log out</a>
+    <a href="<?=url("auth/logout.php");?>" class="btn btn-outline-light m-3" type="button">log out</a>
     <h2>Managing And Library Books</h2>
     <h3> WELCOME : <?= $_SESSION["user"];?> </h3>
 

@@ -26,14 +26,15 @@ if(isset($_POST["nameBook"]) && $_POST["nameBook"] !== ""
 && isset($_POST["Writer"]) && $_POST["Writer"] !== ""
 && isset($_POST["cat_id"]) && $_POST["cat_id"] !== ""){
 
-    if(isset($_FILES["fileToUpload"]) or isset($_FILES["PicPdf"])){
+    if(isset($_FILES["fileToUpload"]) and $_FILES["fileToUpload"]["name"] !== "" or isset($_FILES["PicPdf"]) and $_FILES["PicPdf"]["name"] !== ""){
+
         if($_FILES["fileToUpload"]["name"] !== ""){
             if(file_exists($basePath.$book->addressBook)){
                 unlink($basePath.$book->addressBook);
             }
             $allowedMimesPdf = ['pdf'];
             $pdfMimes = pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION);
-            //dd("hello");
+
             if(!in_array($pdfMimes, $allowedMimesPdf)){
                 redirect("admin");
             }
@@ -100,8 +101,8 @@ if(isset($_POST["nameBook"]) && $_POST["nameBook"] !== ""
         require_once "../../layut/navbarTop.php";
     ?>
     <div class="btn-group" role="group" aria-label="Basic outlined example">
-        <a href="" class="btn btn-outline-light">Back</a>
-        <a href="" class="btn btn-outline-light">Logout</a>
+        <a href="<?=url("admin/manegerBook/index.php");?>" class="btn btn-outline-light">Back</a>
+        <a href="<?=url("auth/logout.php");?>" class="btn btn-outline-light">Logout</a>
     </div>
     <h2>Edite books</h2>
     <a href="<?=url("admin/manegerBook/uploadBook.php");?>" class="btn btn-outline-light m-3" type="button">Upload Book</a>
@@ -117,6 +118,7 @@ if(isset($_POST["nameBook"]) && $_POST["nameBook"] !== ""
             <p dir="rtl" class="mb-0"> توجه داشته باشید شما می‌توانید از قسمت manager Book و بازدن دکمه Edit کتاب خود را ویرایش کنید </p>
         </div>
         <form class="row g-3 mb-5" action="<?= url("admin/manegerBook/edit.php?book_id=".$_GET["book_id"]);?>" method="post" enctype="multipart/form-data">
+        <button type="submit" class="btn btn-primary">Edit</button>
         <div class="col-12">
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupFile01">Edit pdf</label>
@@ -156,10 +158,7 @@ if(isset($_POST["nameBook"]) && $_POST["nameBook"] !== ""
                 <option value="<?= $category->id?>" <?php if($category->id === $book->cat_id){echo 'selected';} ?> > <?= $category->name?> </option>
                 <?php }?>
             </div>
-            <div class="col-12">
-                    <h1>hello</h1>
-             </div>
-            <button type="submit" class="btn btn-primary">Edit</button>
+        
         </form>    
     </div>
 
