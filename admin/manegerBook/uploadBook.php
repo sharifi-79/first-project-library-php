@@ -93,7 +93,20 @@ if(isset($_POST["nameBook"]) && $_POST["nameBook"] !== ""
             <hr>
             <p dir="rtl" class="mb-0"> توجه داشته باشید شما می‌توانید از قسمت manager Book و بازدن دکمه Edit کتاب خود را ویرایش کنید </p>
         </div>
-        <form class="row g-3" action="<?= url("admin/manegerBook/uploadBook.php");?>" method="post" enctype="multipart/form-data">
+        <form class="row g-3 mb-5" action="<?= url("admin/manegerBook/uploadBook.php");?>" method="post" enctype="multipart/form-data">
+            <button type="submit" class="btn btn-primary">Upload</button>
+            <div class="col-12">
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupFile01">Upload pdf</label>
+                    <input type="file" class="form-control" id="inputGroupFile01" name="fileToUpload">
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="inputGroupFile02">Upload Pic Pdf</label>
+                    <input type="file" class="form-control" id="inputGroupFile02" name="PicPdf">
+                </div>
+            </div>
             <div class="col-md-6">
                 <label for="inputEmail4" class="form-label">Name Book</label>
                 <input type="text" class="form-control" id="inputEmail4" name="nameBook" placeholder="Add name Book" >
@@ -119,21 +132,6 @@ if(isset($_POST["nameBook"]) && $_POST["nameBook"] !== ""
                 ?>
                 <option value="<?= $category->id?>"><?= $category->name?></option>
                 <?php }?>
-            </div>
-            <div class="col-12">
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupFile01">Upload pdf</label>
-                    <input type="file" class="form-control" id="inputGroupFile01" name="fileToUpload">
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupFile02">Upload Pic Pdf</label>
-                    <input type="file" class="form-control" id="inputGroupFile02" name="PicPdf">
-                </div>
-            </div>
-            <div class="">
-                <button type="submit" class="btn btn-primary">Upload</button>
             </div>
         </form>    
     </div>

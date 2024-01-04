@@ -46,7 +46,7 @@ if(isset($_POST["nameBook"]) && $_POST["nameBook"] !== ""
                 $qury = "UPDATE books SET nameBook=?, Publications=?, Writer=?, category_id=?, Size=?, addressBook=? WHERE id=?;";
                 $statment = $connection->prepare($qury);
                 $statment->execute([$_POST["nameBook"], $_POST["Publications"], $_POST["Writer"], $_POST["cat_id"], $sizePdf, $pdf, $_GET["book_id"]]);
-
+                redirect("admin/manegerBook");
             }
         }
         if($_FILES["PicPdf"]["name"] !== ""){

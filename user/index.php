@@ -100,7 +100,7 @@ $(document).ready(function() {
                 <td>Delete</td>
             </tr>
             <?php 
-                $qury = "SELECT admin.date_start, admin.date_end, books.nameBook,books.Publications,books.Writer,admin.id,books.addressPic,books.addressBook FROM (( admin INNER JOIN books ON admin.book_id = books.id ) INNER JOIN users ON admin.users_id = users.id AND users.id= ?  );";               
+                $qury = "SELECT admin.id, admin.date_start, admin.date_end, books.nameBook,books.Publications,books.Writer,admin.id,books.addressPic,books.addressBook FROM (( admin INNER JOIN books ON admin.book_id = books.id ) INNER JOIN users ON admin.users_id = users.id AND users.id= ?  );";               
                 $statment = $connection->prepare($qury);
                 $statment->execute([$user->id]);
                 $records = $statment->fetchAll();
@@ -115,16 +115,16 @@ $(document).ready(function() {
                     $formatDateEnd = date_format($creat,"Y-m-d");
                     $from_time =strtotime($formatDateEnd); 
                     $to_time = strtotime($formatDate); 
-                    $diff_minutes = round($from_time - $to_time) /60/60/24;
+                    $diff_minutes = intval(round($from_time - $to_time) /60/60/24)." Day";
 
                     //delete book after date end
                     if($diff_minutes <= 0){
-                        //redirect("");
+                        redirect("user/delete.php?book_id=".$record->id);
                     }
 
                     ?>
             <tr>
-                <td><img src="<?= asset($record->addressPic ) ?>" alt="#"></td>
+                <td><img src="<?= asset($record->addressPic ) ?>" alt="#" width="75" height="100"></td>
                 <td><?= $record->date_start ?></td>
                 <td><?= $record->date_end ?></td>
                 <td><?= $record->nameBook ?></td>
@@ -132,7 +132,7 @@ $(document).ready(function() {
                 <td><?= $record->Writer ?></td>
                 <td><?= $diff_minutes ?></td>
                 <td><a class='btn btn-success' href='<?= asset($record->addressBook); ?>' role='button'>Reade</a></td>
-                <td><a class='btn btn-danger' href='delete_row_admin.php' role='button'>Delete</a></td>
+                <td><a class='btn btn-danger' href='<?= url("user/delete.php?book_id=".$record->id) ?>' role='button'>Delete</a></td>
             </tr>
             <?php }?>
 
