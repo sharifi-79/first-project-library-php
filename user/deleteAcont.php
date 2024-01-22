@@ -8,5 +8,22 @@ $qury = "SELECT * FROM users WHERE username = ? ;";
 $statment = $connection->prepare($qury);
 $statment->execute([$_SESSION["user"]]);
 $user = $statment->fetch();
-var_dump($user->id);
+
+
+if($user->username !== $_SESSION["user"]){
+    redirect("user");
+}
+//delete from table admin books user
+$qury = "DELETE FROM `admin` WHERE users_id = ?";
+$statment = $connection->prepare($qury);
+$statment->execute([$user->id]);
+
+//delete form table user remove user
+$qury = "DELETE FROM `users` WHERE id = ?";
+$statment = $connection->prepare($qury);
+$statment->execute([$user->id]);
+
+//delete date store in session
+session_destroy();
+redirect("index.php");
 

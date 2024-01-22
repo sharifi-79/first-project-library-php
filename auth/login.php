@@ -23,7 +23,7 @@ if(isset($_POST["username"]) && $_POST["username"] !== ""
     }
     
     // check exist email 
-    $qury = "SELECT * FROM users WHERE username = ?";
+    $qury = "SELECT * FROM users WHERE username = ? AND status = 1";
     $statment = $connection->prepare($qury);
     $statment->execute([$_POST["username"]]);
     $user = $statment->fetch();
