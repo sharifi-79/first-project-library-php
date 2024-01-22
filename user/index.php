@@ -24,7 +24,11 @@ $user = $statment->fetch();
     <?php 
         require_once "../layut/navbarTop.php";
     ?>
-    <a href="<?=url("auth/logout.php");?>" class="btn btn-outline-light m-3" type="button">log out</a>
+    <div>
+        <a href="<?=url("auth/logout.php");?>" class="btn btn-outline-light m-3" type="button">log out</a>
+        <button id="delAccount" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete Account</button>
+    </div>
+    
     <h2>Managing And Library Books</h2>
     <h3> WELCOME : <?= $_SESSION["user"];?> </h3>
 
@@ -34,6 +38,71 @@ $user = $statment->fetch();
     ?>    
     
     <div class="container-xl fix">
+
+    <!----------popup card---------------->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete Account</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 dir="rtl">هشدار</h4>
+                    <p dir="rtl">با وارد کردن رمز عبور حساب کاربری شما حذف گردیده و تمام کتاب های شما از بین می رود</p>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">password:</label>
+                        <input type="password" class="form-control " id="recipient-name" name="password">
+                        <div class="valid-feedback">Success! You've done it.</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="<?=url("user/deleteAcont.php")?>" id="deleteAccountBtn"  class="btn btn-danger disabled">Delete</a>
+                </div>
+                </div>
+            </div>
+        </div>
+     <!----------popup card end---------------->
+
+
+    <!----------script chek password---------------->
+        <script ype="text/javascript">
+            $(document).ready(function (){
+                $("input").keyup(function(){
+                    var pass = $("input").val();
+                    
+                        if(pass != ""){
+                            $.ajax({
+                                url : "checkPass.php",
+                                method: "POST",
+                                data: {pass},
+                                // response with echo in php validation
+                                success: function(response) {
+                                        // console.log(response);
+                                        if(response == 1){
+                                            $("#recipient-name").addClass("is-valid");
+                                            $("#deleteAccountBtn").removeClass("disabled");
+                                        }else{
+                                            $("#recipient-name").removeClass("is-valid");
+                                        }
+                                       
+                                }
+                            })
+                    }
+                    
+                })
+            })
+        </script>
+    <!----------script chek password end---------------->
+    
+   
+
+
+
+
+
+
     <!----------input live serch---------------->
         <div class="hederUser"></div>
         <div class="input-group flex-nowrap">
@@ -57,7 +126,7 @@ $(document).ready(function() {
 
                 url:"liveserch.php",
                 method:"POST",
-                data:{input:input},
+                data:{input},
                 success:function(data) {
                     $("#show_items").html(data);
                     $("#show_items").css("display","block");

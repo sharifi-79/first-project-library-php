@@ -8,7 +8,7 @@ if(isset($_POST["input"])){
 
     $input = $_POST["input"];
 
-    $qury = "SELECT * FROM `books` WHERE status = 1 AND `nameBook` LIKE '{$input}%';";
+    $qury = "SELECT * FROM `books` WHERE status = 1 AND `nameBook` LIKE '$input%';";
     $statment = $connection->prepare($qury);
     $statment->execute();
     $books = $statment->fetchAll();
